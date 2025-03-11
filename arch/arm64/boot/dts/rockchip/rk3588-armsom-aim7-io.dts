@@ -17,7 +17,6 @@
 #include "dt-bindings/usb/pd.h"
 #include "rk3588.dtsi"
 #include "rk3588-rk806-single.dtsi"
-#include "rk3588-armsom-aim7-camera.dtsi"
 #include "rk3588-linux.dtsi"
 
 / {
@@ -114,40 +113,6 @@
 		rockchip,jack-det;
 	};
 
-	// leds: leds {
-	// 	compatible = "gpio-leds";
-	// 	work_led: work {
-	// 		label = "red";
-	// 		gpios = <&gpio4 RK_PC5 GPIO_ACTIVE_HIGH>;
-	// 		linux,default-trigger = "heartbeat";
-	// 	};
-
-	// 	active_led: active {
-	// 		label = "green";
-	// 		gpios = <&gpio0 RK_PB7 GPIO_ACTIVE_HIGH>;
-	// 		linux,default-trigger = "none";
-	// 	};
-	// };
-
-    // es8316_sound: es8316-sound {
-	// 	status = "okay";
-	// 	compatible = "simple-audio-card";
-	// 	simple-audio-card,format = "i2s";
-	// 	simple-audio-card,mclk-fs = <256>;
-	// 	simple-audio-card,name = "rockchip-es8316";
-	// 	simple-audio-card,dai-link@0 {
-	// 		format = "i2s";
-	// 		cpu {
-	// 			sound-dai = <&i2s0_8ch>;
-	// 		};
-	// 		codec {
-	// 			sound-dai = <&es8316>;
-	// 		};
-	// 	};
-	// };
-
-
-
 	pcie30_avdd0v75: pcie30-avdd0v75 {
 		compatible = "regulator-fixed";
 		regulator-name = "pcie30_avdd0v75";
@@ -177,18 +142,6 @@
 		regulator-max-microvolt = <1100000>;
 		vin-supply = <&vcc5v0_sys>;
 	};
-
-	// vbus5v0_typec: vbus5v0-typec {
-	// 	compatible = "regulator-fixed";
-	// 	regulator-name = "vbus5v0_typec";
-	// 	regulator-min-microvolt = <5000000>;
-	// 	regulator-max-microvolt = <5000000>;
-	// 	enable-active-high;
-	// 	gpio = <&gpio2 RK_PB6 GPIO_ACTIVE_HIGH>;
-	// 	vin-supply = <&vcc5v0_sys>;
-	// 	pinctrl-names = "default";
-	// 	pinctrl-0 = <&typec5v_pwren>;
-	// };
 
 	vcc3v3_pcie30_clk: vcc3v3-pcie30 {
 		compatible = "regulator-fixed";
@@ -288,14 +241,6 @@
 	mem-supply = <&vdd_gpu_mem_s0>;
 	status = "okay";
 };
-
-// &i2s0_8ch {
-// 	status = "okay";
-// 	pinctrl-0 = <&i2s0_lrck
-// 		     &i2s0_sclk
-// 		     &i2s0_sdi0
-// 		     &i2s0_sdo0>;
-// };
 
 &i2s2_2ch {
 	pinctrl-0 = <&i2s2m1_lrck &i2s2m1_sclk &i2s2m1_sdi &i2s2m1_sdo>;
@@ -981,16 +926,6 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&sdmmc_bus4 &sdmmc_clk &sdmmc_cmd &sdmmc_det>;
 	status = "okay";
-};
-
-// &uart1 {
-// 	status = "okay";
-// };
-
-&uart6 {
-	status = "disabled";
-	pinctrl-names = "default";
-	pinctrl-0 = <&uart6m1_xfer &uart6m1_ctsn>;
 };
 
 &uart7 {
