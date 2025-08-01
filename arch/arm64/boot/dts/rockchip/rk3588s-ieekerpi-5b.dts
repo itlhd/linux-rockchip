@@ -24,7 +24,7 @@
 	compatible = "rockchip,rk3588s-ieeker-pi5b", "rockchip,rk3588";
 	/delete-node/ chosen;
 
-		bt-sound {
+	bt-sound {
 		compatible = "simple-audio-card";
 		simple-audio-card,format = "dsp_a";
 		simple-audio-card,bitclock-inversion = <1>;
@@ -36,6 +36,26 @@
 		simple-audio-card,codec {
 				sound-dai = <&bt_sco>;
 		};
+	};
+
+	dp0_sound: dp0-sound {
+		status = "disabled";
+		compatible = "rockchip,hdmi";
+		rockchip,card-name= "rockchip-dp0";
+		rockchip,mclk-fs = <512>;
+		rockchip,cpu = <&spdif_tx2>;
+		rockchip,codec = <&dp0 1>;
+		rockchip,jack-det;
+	};
+
+	hdmi0_sound: hdmi0-sound {
+		status = "disabled";
+		compatible = "rockchip,hdmi";
+		rockchip,mclk-fs = <128>;
+		rockchip,card-name = "rockchip-hdmi0";
+		rockchip,cpu = <&i2s5_8ch>;
+		rockchip,codec = <&hdmi0>;
+		rockchip,jack-det;
 	};
 
 	bt_sco: bt-sco {
@@ -902,10 +922,6 @@
 };
 
 &dp0_in_vp2 {
-        status = "okay";
-};
-
-&dp0_sound{
         status = "okay";
 };
 
